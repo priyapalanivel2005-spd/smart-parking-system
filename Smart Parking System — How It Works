@@ -1,0 +1,88 @@
+## How It Works
+
+The Smart Parking System uses an **Arduino Uno**, three **IR sensors**, a **servo motor**, and a **16×2 I2C LCD** to automatically detect vehicles, control the parking gate, and display parking slot availability.
+
+### Working Process
+
+1. **Vehicle Detection at the Entrance**
+
+   * The gate IR sensor is connected to **D4**.
+   * When a vehicle approaches the entrance, the IR sensor detects it.
+   * The Arduino receives the sensor signal and identifies that a vehicle is present.
+
+2. **Automatic Gate Control**
+
+   * The Arduino controls the servo motor connected to **D5**.
+   * When a vehicle is detected, the servo rotates to approximately **90°**, opening the gate.
+   * After the vehicle passes the entrance sensor, the servo returns to **0°** and closes the gate.
+
+3. **Parking Slot Detection**
+
+   * Two IR sensors are used to monitor the parking slots.
+   * **Slot 1 sensor → D2**
+   * **Slot 2 sensor → D3**
+   * When a vehicle occupies a slot, the corresponding IR sensor detects it.
+
+4. **Parking Status Processing**
+
+   * The Arduino continuously reads the three IR sensors.
+   * The system treats:
+
+     * **LOW → Vehicle detected / Slot FULL**
+     * **HIGH → No vehicle / Slot EMPTY**
+
+5. **LCD Display**
+
+   * The 16×2 I2C LCD is connected using:
+
+     * **SDA → A4**
+     * **SCL → A5**
+   * The LCD displays the current status of both parking slots, for example:
+
+   `S1:FULL  S2:EMPTY`
+
+6. **Continuous Monitoring**
+
+   * The Arduino repeatedly checks the sensors.
+   * Whenever a vehicle enters or leaves a parking slot, the LCD status is updated.
+   * This provides a simple real-time view of available parking spaces.
+
+### System Flow
+
+```text
+Vehicle Approaches
+        ↓
+   Gate IR Sensor
+        ↓
+     Arduino Uno
+        ↓
+   Servo Motor
+        ↓
+     Gate Opens
+        ↓
+Vehicle Enters Parking Area
+        ↓
+ Slot IR Sensors Detect Vehicle
+        ↓
+     Arduino Uno
+        ↓
+   LCD Displays Status
+        ↓
+ S1: FULL / EMPTY
+ S2: FULL / EMPTY
+```
+
+### Pin Configuration
+
+| Component        | Arduino Pin |
+| ---------------- | ----------- |
+| Slot 1 IR Sensor | D2          |
+| Slot 2 IR Sensor | D3          |
+| Gate IR Sensor   | D4          |
+| Servo Motor      | D5          |
+| LCD SDA          | A4          |
+| LCD SCL          | A5          |
+
+### Key Concept
+
+The Arduino acts as the **central controller**. It receives input from the IR sensors, processes the vehicle detection status, controls the servo gate, and sends the parking availability information to the LCD.
