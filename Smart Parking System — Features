@@ -1,0 +1,12 @@
+## Features
+
+* 🚗 **Automatic Vehicle Detection** – Detects vehicles using IR sensors.
+* 🅿️ **Real-Time Parking Slot Monitoring** – Monitors the occupancy of two parking slots.
+* 🚪 **Automatic Gate Control** – Opens and closes the parking gate using a servo motor.
+* 📺 **LCD Status Display** – Displays the real-time availability of each parking slot.
+* 🔄 **Continuous Monitoring** – Continuously checks parking slot status and updates the display.
+* ⚡ **Low-Cost Implementation** – Uses affordable and easily available components.
+* 🔌 **Simple Hardware Integration** – Integrates IR sensors, servo motor, LCD, and Arduino Uno.
+* 📈 **Expandable Design** – Can be extended to support additional parking slots and features.
+* ⚙️ **Embedded Control System** – Uses Arduino Uno for sensor processing and automated control.
+* 🔧 **Easy to Implement** – Suitable for academic projects, prototypes, and small parking areas.
